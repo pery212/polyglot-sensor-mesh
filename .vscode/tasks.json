@@ -36,6 +36,27 @@
             }
         },
         {
+            "label": "west_build_esp32_gateway_pristine",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && west build -b esp32_devkitc/esp32/procpu --pristine",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
             "label": "west_flash_esp32_gateway",
             "type": "shell",
             "command": "pwd && source .venv/bin/activate && cd my_code && west flash",
@@ -72,6 +93,27 @@
                 "clear": true
             },
             "problemMatcher": []
+        },
+        {
+            "label": "west_clean_esp32_gateway",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && rm -rf build",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
         }
     ]
 }

@@ -9,3 +9,7 @@ properties:
     type: phandle-array
     required: true
     description: Pin GPIO conectado al bus de datos del DHT11
+  sample-text:
+    type: string
+    required: true
+    description: Texto de prueba

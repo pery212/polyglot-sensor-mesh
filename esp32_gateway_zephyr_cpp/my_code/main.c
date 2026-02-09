@@ -1,4 +1,5 @@
 #include <zephyr/device.h>
+#include <zephyr/drivers/auxdisplay.h>
 #include <zephyr/drivers/sensor.h> // API estándar de sensores
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -22,6 +23,32 @@ int main(void) {
 
   LOG_INF("Driver listo. Empezando lecturas...");
 
+  const struct device *const lcd = DEVICE_DT_GET(DT_NODELABEL(lcd0));
+
+  if (!device_is_ready(lcd)) {
+    printk("Error: La pantalla LCD no está lista.\n");
+    return 0;
+  }
+
+  auxdisplay_cursor_position_set(lcd, AUXDISPLAY_POSITION_ABSOLUTE, 0,
+                                 0); // Fila 0, Columna 0
+  auxdisplay_write(lcd, "Hola Pedro!", 11);
+
+  auxdisplay_cursor_position_set(lcd, AUXDISPLAY_POSITION_ABSOLUTE, 0, 1);
+  auxdisplay_write(lcd, "Zephyr Rules", 12);
+
+  int count = 5;
+  while (count > 0) {
+
+    auxdisplay_cursor_position_set(lcd, AUXDISPLAY_POSITION_ABSOLUTE, 0, 1);
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "Iniciando en %d", count);
+    auxdisplay_write(lcd, buffer, strlen(buffer));
+
+    k_msleep(1000);
+    count--;
+  }
+
   struct sensor_value temp, hum;
 
   while (1) {
@@ -38,6 +65,12 @@ int main(void) {
       // 5. Imprimir resultados usando el conversor a double (o val1/val2)
       LOG_INF("Temp: %d.%06d C | Hum: %d.%06d %%", temp.val1, temp.val2,
               hum.val1, hum.val2);
+
+      auxdisplay_cursor_position_set(lcd, AUXDISPLAY_POSITION_ABSOLUTE, 0, 1);
+      char buffer[16];
+      snprintf(buffer, sizeof(buffer), "T:%d.%02d H:%d.%02d %%", temp.val1,
+               temp.val2, hum.val1, hum.val2);
+      auxdisplay_write(lcd, buffer, strlen(buffer));
     }
 
     k_msleep(2000);
