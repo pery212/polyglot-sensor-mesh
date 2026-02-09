@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Esp32 Gateway Linux",
+            "type": "cppdbg",
+            "request": "launch",
+            // Ruta al ejecutable que genera west
+            "program": "${workspaceFolder}/esp32_gateway_zephyr_cpp/my_code/build/zephyr/zephyr.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Load symbols",
+                    "text": "file ${workspaceFolder}/esp32_gateway_zephyr_cpp/my_code/build/zephyr/zephyr.exe",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Breakpoint on main",
+                    "text": "-break-insert main.c:main"
+                }
+            ],
+            "preLaunchTask": "west_build_native_sim_gateway"
+        }
+    ]
+}

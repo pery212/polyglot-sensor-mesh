@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "west_build_native_sim_gateway",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && west build -b native_sim",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        }
+    ]
+}

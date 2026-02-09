@@ -1,0 +1,11 @@
+description: Driver personalizado para DHT11 de Pedro
+
+compatible: "pedro,dht11"
+
+include: sensor-device.yaml
+
+properties:
+  dio-gpios:
+    type: phandle-array
+    required: true
+    description: Pin GPIO conectado al bus de datos del DHT11

@@ -1,0 +1,8 @@
+/ {
+my_sensors {
+temp_sensor:temperature_sensor {
+compatible = "pedro,temperature_sensor";
+status = "okay";
+};
+};
+};

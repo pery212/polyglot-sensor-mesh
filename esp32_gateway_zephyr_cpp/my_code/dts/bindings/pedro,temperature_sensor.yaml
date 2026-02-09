@@ -1,0 +1,9 @@
+compatible: "pedro,temperature_sensor"
+
+description: Driver simulado de temperatura (no requiere hardware)
+
+# Heredamos de sensor-device para tener la propiedad 'status' por defecto
+include: sensor-device.yaml
+
+# Al ser simulado, dejamos el bloque de properties vacío o solo con lo básico
+properties: {}
