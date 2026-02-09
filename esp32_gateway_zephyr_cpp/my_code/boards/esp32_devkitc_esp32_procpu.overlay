@@ -1,0 +1,9 @@
+/ {
+my_sensors {
+temp_sensor:dth11_sensor {
+compatible = "pedro,dht11";
+dio-gpios = <&gpio 4 GPIO_ACTIVE_HIGH>;
+status = "okay";
+};
+};
+};

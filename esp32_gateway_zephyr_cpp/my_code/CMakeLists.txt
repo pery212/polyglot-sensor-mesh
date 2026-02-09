@@ -1,8 +1,13 @@
 # Versión mínima de CMake requerida por Zephyr
 cmake_minimum_required(VERSION 3.20.0)
 
+# Export the compile commands for the project
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+
+string(REPLACE "/" "_" BOARD_CLEAN ${BOARD})
 message(STATUS "--------------------------------------------")
-message(STATUS "COMPILING FOR BOARD: ${BOARD}")
+message(STATUS "COMPILING FOR BOARD: ${BOARD_CLEAN}")
 message(STATUS "ARCHITECTURE DETECTED:   ${ARCH}")
 message(STATUS "--------------------------------------------")
 
@@ -18,5 +23,10 @@ project(esp32_logs)
 target_sources(app PRIVATE main.c)
 
 # Compile all drivers for the board too
-file(GLOB BOARD_SOURCES "drivers/${BOARD}/*.c")
+message(STATUS "Compiling drivers from folder: drivers/${BOARD_CLEAN}")
+file(GLOB BOARD_SOURCES "drivers/${BOARD_CLEAN}/*.c")
 target_sources(app PRIVATE ${BOARD_SOURCES})
+
+# Display the list of sources
+message(STATUS "List of sources: ${BOARD_SOURCES}")
+

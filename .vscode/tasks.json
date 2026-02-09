@@ -13,6 +13,65 @@
                 "isDefault": true
             },
             "problemMatcher": "$gcc"
+        },
+        {
+            "label": "west_build_esp32_gateway",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && west build -b esp32_devkitc/esp32/procpu",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "west_flash_esp32_gateway",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && west flash",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "esp_get_logs",
+            "type": "shell",
+            "command": "killall -q picocom || true ; picocom -b 115200 /dev/ttyUSB0 ; killall -q picocom || true",
+            "group": {
+                "kind": "run",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "clear": true
+            },
+            "problemMatcher": []
         }
     ]
 }
