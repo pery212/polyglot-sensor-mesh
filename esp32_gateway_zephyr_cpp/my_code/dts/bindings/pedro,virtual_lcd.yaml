@@ -1,0 +1,19 @@
+description: Driver for virtual lcd in linux tmp file
+
+compatible: "pedro,virtual_lcd"
+
+include: sensor-device.yaml
+
+properties:
+  file:
+    type: string
+    required: true
+    description: Path to the file to use as virtual lcd
+  columns:
+    type: int
+    required: true
+    description: Number of columns of the virtual lcd
+  rows:
+    type: int
+    required: true
+    description: Number of rows of the virtual lcd

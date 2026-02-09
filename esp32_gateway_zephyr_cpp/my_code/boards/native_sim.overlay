@@ -1,8 +1,18 @@
 / {
-my_sensors {
-temp_sensor:temperature_sensor {
-compatible = "pedro,temperature_sensor";
-status = "okay";
-};
-};
+	my_sensors {
+		temp_sensor: temperature_sensor {
+			compatible = "pedro,temperature_sensor";
+			status = "okay";
+		};
+	};
+
+	/* La pantalla LCD con los nombres de variables del YAML */
+	lcd0: virtual_lcd {
+		compatible = "pedro,virtual_lcd";
+		status = "okay";
+
+		file = "/tmp/lcd.txt";
+		columns = <16>;
+		rows = <2>;
+	};
 };

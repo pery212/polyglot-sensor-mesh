@@ -15,6 +15,19 @@
             "problemMatcher": "$gcc"
         },
         {
+            "label": "west_build_native_sim_gateway_pristine",
+            "type": "shell",
+            "command": "pwd && source .venv/bin/activate && cd my_code && west build -b native_sim --pristine",
+            "options": {
+                "cwd": "${workspaceFolder}/esp32_gateway_zephyr_cpp"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
             "label": "west_build_esp32_gateway",
             "type": "shell",
             "command": "pwd && source .venv/bin/activate && cd my_code && west build -b esp32_devkitc/esp32/procpu",

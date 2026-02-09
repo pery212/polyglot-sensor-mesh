@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/auxdisplay.h>
 #include <zephyr/drivers/sensor.h> // API estándar de sensores
