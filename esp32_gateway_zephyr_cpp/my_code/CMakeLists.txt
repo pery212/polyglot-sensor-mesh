@@ -21,6 +21,10 @@ project(esp32_logs)
 
 # ADD YOUR SOURCE FILE
 target_sources(app PRIVATE main.c)
+file(GLOB APP_SOURCES "src/*.c")
+target_sources(app PRIVATE ${APP_SOURCES})
+file(GLOB APP_SOURCES "src/*.cpp")
+target_sources(app PRIVATE ${APP_SOURCES})
 
 # Compile all drivers for the board too
 message(STATUS "Compiling drivers from folder: drivers/${BOARD_CLEAN}")

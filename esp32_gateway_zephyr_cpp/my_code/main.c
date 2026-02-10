@@ -6,6 +6,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
+#include "src/BLEManager.h"
+
 LOG_MODULE_REGISTER(main_app);
 
 int main(void) {
@@ -38,6 +40,9 @@ int main(void) {
 
   auxdisplay_cursor_position_set(lcd, AUXDISPLAY_POSITION_ABSOLUTE, 0, 1);
   auxdisplay_write(lcd, "Zephyr Rules", 12);
+
+  // Create BLEManager
+  create_ble_manager();
 
   int count = 5;
   while (count > 0) {
